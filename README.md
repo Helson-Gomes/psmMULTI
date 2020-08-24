@@ -1,3 +1,41 @@
+# psmMULTI
+R package do compute Propensity Score Matching when the treatment is a multi-categorical variable
+
+## get_treatment
+The *get_treatment* function allows you to get the treated individuals and your controls according to k nearest neighbor method when treatment is a multi-categorical variable. The distance used to get the control group is based on the minimum distance between the propensity score of a specific treated individual and all untreated individuals.
+
+The usage is get_treatment(data, k, group, formula, var_multi)
+
+Where:
+***data*** is the original data frame with the multi-categorical variable and independent variables.
+
+***k*** is the number of nearest neighbors chosen by the user to calculate the distance between treated and untreated.
+
+***group*** is One category of the multi-categorical variable. The parameter group needs to be a numeric value and the categorical variable needs to be in a numerical format.
+
+***formula*** Is the formula of the multinomial logit model.
+
+***var_multi*** Is the position number of the multi-categorical variable in the data frame.
+
+Example:
+
+\# In this example, x1 is the multi-categorical treatment variable.
+
+\# x2 and x3 are variables that determines the treatment.
+
+\# Note that x1 is the first column in the data frame, that is, var_multi = 1.
+
+\# We are using two nearest neighbor, that is, k = 2.
+
+\# We are interested in the group of treatment number one, that is, group=1
+
+dt <- data.frame(x1 =rep(c(1,2,3), 4), x2 = rnorm(12, 0, .5), x3 = rnorm(12, 1, .5))
+
+get_treatment(data = dt, k = 2, group = 1, formula = x1 ~ x2 + x3, var_multi = 1)
+
+## psm_multi
+A function to compute propensity score matching with multiple matches
+
 The usage is psm_multi(data, k, group, formula, var_multi)
 
 Where:
