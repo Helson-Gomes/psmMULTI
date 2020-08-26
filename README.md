@@ -1,5 +1,5 @@
 # psmMULTI
-R package do compute Propensity Score Matching when the treatment is a multi-categorical variable
+R package to compute Propensity Score Matching when the treatment is a multi-categorical variable
 
 ## get_treatment
 The *get_treatment* function allows you to get the treated individuals and your controls according to k nearest neighbor method when treatment is a multi-categorical variable. The distance used to get the control group is based on the minimum distance between the propensity score of a specific treated individual and all untreated individuals.
